@@ -1,9 +1,12 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Main Shade class
  */
 public class Shade {
+    private static ArrayList<String> todo = new ArrayList<>();
+
     public static void main(String[] args) {
         String logo = "   _____ _               _      \n" +
                 "  / ____| |             | |     \n" +
@@ -17,8 +20,25 @@ public class Shade {
         for (Scanner s = new Scanner(System.in);
              !str.equals("bye");
              str = s.nextLine()) {
-            System.out.println(str);
+            switch (str.strip()) {
+                case "":
+                    continue;
+                case "list":
+                    Shade.list();
+                    break;
+                default:
+                    todo.add(str);
+                    System.out.println("added: " + str);
+            }
         }
         System.out.println("Bye. Hope to see you again soon!\n");
+    }
+
+    private static void list() {
+        int i = 1;
+        for (String s: todo) {
+            System.out.println((i) + ". " + s);
+            i++;
+        }
     }
 }
