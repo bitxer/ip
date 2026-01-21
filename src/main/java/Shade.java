@@ -18,13 +18,29 @@ public class Shade {
         System.out.println("What can I do for you?\n");
         String str = "";
         for (Scanner s = new Scanner(System.in); !str.equals("bye");
-                str = s.nextLine()) {
-            switch (str.strip()) {
+                str = s.nextLine().strip()) {
+            String[] words = str.split(" ");
+            Task t;
+            switch (words[0]) {
                 case "":
-                    continue;
-                case "list":
-                    Shade.list();
                     break;
+                case "mark":
+                    t = tasks.get(Integer.parseInt(words[1]) - 1);
+                    t.mark();
+                    System.out.println("Nice! I've marked this task as done:");
+                    System.out.println("  " + t);
+                    break;
+                case "unmark":
+                    t = tasks.get(Integer.parseInt(words[1]) - 1);
+                    t.unmark();
+                    System.out.println("Nice! I've marked this task as done:");
+                    System.out.println("  " + t);
+                    break;
+                case "list":
+                    if (words.length == 1) {
+                        Shade.list();
+                        break;
+                    }
                 default:
                     tasks.add(new Task(str));
                     System.out.println("added: " + str);
