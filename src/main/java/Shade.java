@@ -25,15 +25,12 @@ public class Shade {
                 case "":
                     break;
                 case "mark":
-                    t = tasks.get(Integer.parseInt(words[1]) - 1);
-                    t.mark();
-                    System.out.println("Nice! I've marked this task as done:");
-                    System.out.println("  " + t);
-                    break;
                 case "unmark":
                     t = tasks.get(Integer.parseInt(words[1]) - 1);
-                    t.unmark();
-                    System.out.println("Nice! I've marked this task as done:");
+                    t.mark(words[0].equals("mark"));
+                    System.out.println(words[0].equals("mark")
+                            ? "Nice! I've marked this task as done:"
+                            : "OK, I've marked this task as not done yet:");
                     System.out.println("  " + t);
                     break;
                 case "list":

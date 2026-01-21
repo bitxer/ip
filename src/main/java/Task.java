@@ -14,14 +14,9 @@ public class Task {
         this.isDone = isDone;
     }
 
-    public void mark() {
-        this.isDone = true;
+    public void mark(boolean isDone) {
+        this.isDone = isDone;
     }
-
-    public void unmark() {
-        this.isDone = false;
-    }
-
     @Override
     public String toString() {
         return "[" + (this.isDone ? "X" : " ") + "] " + this.task;
