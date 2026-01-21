@@ -6,6 +6,8 @@ public class Shade {
                 "  \\___ \\| '_ \\ / _` |/ _` |/ _ \\\n" +
                 "  ____) | | | | (_| | (_| |  __/\n" +
                 " |_____/|_| |_|\\__,_|\\__,_|\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        System.out.println("Hello! I'm \n" + logo);
+        System.out.println("What can I do for you?\n");
+        System.out.println("Bye. Hope to see you again soon!\n");
     }
 }
