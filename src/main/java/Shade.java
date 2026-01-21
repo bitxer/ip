@@ -5,7 +5,7 @@ import java.util.Scanner;
  * Main Shade class
  */
 public class Shade {
-    private static ArrayList<String> todo = new ArrayList<>();
+    private static ArrayList<Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         String logo = "   _____ _               _      \n" +
@@ -17,9 +17,8 @@ public class Shade {
         System.out.println("Hello! I'm \n" + logo);
         System.out.println("What can I do for you?\n");
         String str = "";
-        for (Scanner s = new Scanner(System.in);
-             !str.equals("bye");
-             str = s.nextLine()) {
+        for (Scanner s = new Scanner(System.in); !str.equals("bye");
+                str = s.nextLine()) {
             switch (str.strip()) {
                 case "":
                     continue;
@@ -27,7 +26,7 @@ public class Shade {
                     Shade.list();
                     break;
                 default:
-                    todo.add(str);
+                    tasks.add(new Task(str));
                     System.out.println("added: " + str);
             }
         }
@@ -36,8 +35,8 @@ public class Shade {
 
     private static void list() {
         int i = 1;
-        for (String s: todo) {
-            System.out.println((i) + ". " + s);
+        for (Task t: tasks) {
+            System.out.println((i) + "." + t);
             i++;
         }
     }
