@@ -16,10 +16,10 @@ public class Shade {
                 " |_____/|_| |_|\\__,_|\\__,_|\\___|\n";
         System.out.println("Hello! I'm \n" + logo);
         System.out.println("What can I do for you?\n");
-        String str = "";
-        for (Scanner s = new Scanner(System.in); !str.equals("bye");
-                str = s.nextLine().strip()) {
-            String[] words = str.split(" ");
+
+        Scanner s = new Scanner(System.in);
+        for (String inp = s.nextLine().strip(); !inp.equals("bye"); inp = s.nextLine().strip()) {
+            String[] words = inp.split(" ");
             Task t;
             switch (words[0]) {
                 case "":
@@ -39,8 +39,8 @@ public class Shade {
                         break;
                     }
                 default:
-                    tasks.add(new Task(str));
-                    System.out.println("added: " + str);
+                    tasks.add(new Task(inp));
+                    System.out.println("added: " + inp);
             }
         }
         System.out.println("Bye. Hope to see you again soon!\n");
