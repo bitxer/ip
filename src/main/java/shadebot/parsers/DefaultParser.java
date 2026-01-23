@@ -14,9 +14,7 @@ public class DefaultParser implements Parser {
             case "unmark":
                 return new MarkCommand(this.getArg(words), words[0].equals("mark"));
             case "list":
-                if (words.length == 1) {
-                    return new ListCommand();
-                }
+                return new ListCommand();
             case "todo":
                 return new TodoCommand(this.getArg(words));
             case "deadline":
