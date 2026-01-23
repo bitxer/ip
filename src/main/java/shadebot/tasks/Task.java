@@ -1,5 +1,7 @@
+package shadebot.tasks;
+
 /**
- * Task class file
+ * shadebot.Task class file
  */
 public class Task {
     private final String task;
@@ -17,6 +19,7 @@ public class Task {
     public void mark(boolean isDone) {
         this.isDone = isDone;
     }
+
     @Override
     public String toString() {
         return "[" + (this.isDone ? "X" : " ") + "] " + this.task;

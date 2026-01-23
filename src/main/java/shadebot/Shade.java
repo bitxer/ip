@@ -1,11 +1,15 @@
+package shadebot;
+
+import shadebot.tasks.Task;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Main Shade class
+ * Main shadebot.Shade class
  */
 public class Shade {
-    private static ArrayList<Task> tasks = new ArrayList<>();
+    private static ArrayList<shadebot.tasks.Task> tasks = new ArrayList<>();
 
     public static void main(String[] args) {
         String logo = "   _____ _               _      \n" +
