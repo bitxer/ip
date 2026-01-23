@@ -9,9 +9,13 @@ import java.util.Scanner;
  * Main shadebot.Shade class
  */
 public class Shade {
-    private static ArrayList<shadebot.tasks.Task> tasks = new ArrayList<>();
+    private final ArrayList<Task> storage;
 
-    public static void main(String[] args) {
+    public Shade(ArrayList<Task> storage) {
+        this.storage = storage;
+    }
+
+    public void run() {
         String logo = "   _____ _               _      \n" +
                 "  / ____| |             | |     \n" +
                 " | (___ | |__   __ _  __| | ___ \n" +
@@ -30,7 +34,7 @@ public class Shade {
                     break;
                 case "mark":
                 case "unmark":
-                    t = tasks.get(Integer.parseInt(words[1]) - 1);
+                    t = this.storage.get(Integer.parseInt(words[1]) - 1);
                     t.mark(words[0].equals("mark"));
                     System.out.println(words[0].equals("mark")
                             ? "Nice! I've marked this task as done:"
@@ -39,22 +43,27 @@ public class Shade {
                     break;
                 case "list":
                     if (words.length == 1) {
-                        Shade.list();
+                        this.list();
                         break;
                     }
                 default:
-                    tasks.add(new Task(inp));
+                    this.storage.add(new Task(inp));
                     System.out.println("added: " + inp);
             }
         }
         System.out.println("Bye. Hope to see you again soon!\n");
     }
 
-    private static void list() {
+    private void list() {
         int i = 1;
-        for (Task t: tasks) {
+        for (Task t: this.storage) {
             System.out.println((i) + "." + t);
             i++;
         }
     }
+
+    public static void main(String[] args) {
+        new Shade(new ArrayList<>()).run();
+    }
+
 }
