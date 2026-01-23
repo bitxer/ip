@@ -21,6 +21,8 @@ public class DefaultParser implements Parser {
                 return new DeadlineParser().parse(this.getArg(words));
             case "event":
                 return new EventParser().parse(this.getArg(words));
+            case "delete":
+                return new DeleteCommand(this.getArg(words));
         }
         throw new UnknownCommandException("OOPS!!! I'm sorry, but I don't know what that means :-(");
     }
