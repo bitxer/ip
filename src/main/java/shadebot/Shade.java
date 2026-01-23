@@ -10,10 +10,10 @@ import java.util.Scanner;
  * Main shadebot.Shade class
  */
 public class Shade {
-    private final ArrayList<Task> storage;
+    private final ArrayList<Task> tasks;
 
     public Shade(ArrayList<Task> storage) {
-        this.storage = storage;
+        this.tasks = storage;
     }
 
     public void run() {
@@ -28,7 +28,7 @@ public class Shade {
 
         Scanner s = new Scanner(System.in);
         for (String inp = s.nextLine().strip(); !inp.equals("bye"); inp = s.nextLine().strip()) {
-            System.out.println(new DefaultParser().parse(inp).execute(this.storage));
+            System.out.println(new DefaultParser().parse(inp).execute(this.tasks));
         }
         System.out.println("Bye. Hope to see you again soon!\n");
     }
