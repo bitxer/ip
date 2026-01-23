@@ -19,8 +19,8 @@ public class DefaultParser implements Parser {
                 }
             case "todo":
                 return new TodoCommand(words[1]);
-            default:
-                return null;
+            case "deadline":
+                return new DeadlineParser().parse(words[1]);
         }
         return null;
     }
