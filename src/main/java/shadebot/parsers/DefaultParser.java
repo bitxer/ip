@@ -1,9 +1,6 @@
 package shadebot.parsers;
 
-import shadebot.commands.AddCommand;
-import shadebot.commands.Command;
-import shadebot.commands.ListCommand;
-import shadebot.commands.MarkCommand;
+import shadebot.commands.*;
 
 public class DefaultParser implements Parser {
 
@@ -20,8 +17,10 @@ public class DefaultParser implements Parser {
                 if (words.length == 1) {
                     return new ListCommand();
                 }
+            case "todo":
+                return new TodoCommand(words[1]);
             default:
-                return new AddCommand(inp);
+                return null;
         }
         return null;
     }

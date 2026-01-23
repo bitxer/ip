@@ -3,7 +3,7 @@ package shadebot.tasks;
 /**
  * shadebot.Task class file
  */
-public class Task {
+public abstract class Task {
     private final String task;
     private boolean isDone;
 
@@ -22,6 +22,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return "[" + (this.isDone ? "X" : " ") + "] " + this.task;
+        return String.format("[%s] %s", this.isDone ? "X" : " ", this.task);
     }
 }
