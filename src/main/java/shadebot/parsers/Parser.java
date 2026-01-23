@@ -1,4 +1,7 @@
 package shadebot.parsers;
 
-public class Parser {
+import shadebot.commands.Command;
+
+public interface Parser {
+    public Command parse();
 }
