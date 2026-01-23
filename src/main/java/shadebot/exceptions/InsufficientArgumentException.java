@@ -1,0 +1,7 @@
+package shadebot.exceptions;
+
+public class InsufficientArgumentException extends RuntimeException {
+    public InsufficientArgumentException(String message) {
+        super(message);
+    }
+}

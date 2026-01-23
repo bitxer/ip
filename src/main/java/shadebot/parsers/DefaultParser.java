@@ -1,7 +1,8 @@
 package shadebot.parsers;
 
-import jdk.jfr.Event;
 import shadebot.commands.*;
+import shadebot.exceptions.InsufficientArgumentException;
+import shadebot.exceptions.UnknownCommandException;
 
 public class DefaultParser implements Parser {
 
@@ -11,18 +12,25 @@ public class DefaultParser implements Parser {
         switch (words[0]) {
             case "mark":
             case "unmark":
-                return new MarkCommand(words[1], words[0].equals("mark"));
+                return new MarkCommand(this.getArg(words), words[0].equals("mark"));
             case "list":
                 if (words.length == 1) {
                     return new ListCommand();
                 }
             case "todo":
-                return new TodoCommand(words[1]);
+                return new TodoCommand(this.getArg(words));
             case "deadline":
-                return new DeadlineParser().parse(words[1]);
+                return new DeadlineParser().parse(this.getArg(words));
             case "event":
-                return new EventParser().parse(words[1]);
+                return new EventParser().parse(this.getArg(words));
         }
-        return null;
+        throw new UnknownCommandException("OOPS!!! I'm sorry, but I don't know what that means :-(");
+    }
+
+    private String getArg(String[] inp) {
+        if (inp.length < 2) {
+            throw new InsufficientArgumentException(String.format("Insufficient arguments provided for %s", inp[0]));
+        }
+        return inp[1];
     }
 }

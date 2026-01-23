@@ -1,5 +1,6 @@
 package shadebot;
 
+import shadebot.exceptions.UnknownCommandException;
 import shadebot.parsers.DefaultParser;
 import shadebot.tasks.Task;
 
@@ -28,7 +29,11 @@ public class Shade {
 
         Scanner s = new Scanner(System.in);
         for (String inp = s.nextLine().strip(); !inp.equals("bye"); inp = s.nextLine().strip()) {
-            System.out.println(new DefaultParser().parse(inp).execute(this.tasks));
+            try {
+                System.out.println(new DefaultParser().parse(inp).execute(this.tasks));
+            } catch (Exception e) {
+                System.err.println(e.getMessage());
+            }
         }
         System.out.println("Bye. Hope to see you again soon!\n");
     }
