@@ -12,6 +12,6 @@ public class TodoTask extends Task {
 
     @Override
     public String toString() {
-        return String.format("  [%s]%s", this.TYPE, super.toString());
+        return String.format("[%s]%s", this.TYPE, super.toString());
     }
 }
